@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyText
+  list: one
+  state_cd: 1
+
+two:
+  body: MyText
+  list: two
+  state_cd: 1

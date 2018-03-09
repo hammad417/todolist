@@ -56,3 +56,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #project gems
 gem 'devise'
 gem 'devise-bootstrap-views'
+gem 'record_tag_helper'
