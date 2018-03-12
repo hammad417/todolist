@@ -1,0 +1,3 @@
+$(document).ready(function(){
+  $("#list-<%= @list.id %>").find("ul").append("<li><%= @task.body %></li>");
+});

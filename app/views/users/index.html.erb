@@ -1,4 +1,8 @@
-<h3> User Email list </h3>
-<% @users.each_with_index do |user, index| %>
-  <p><%= index + 1 %>.<%=user.email %></p>
-<%end %>
+<h3> User list </h3>
+<div class='well'>
+<ul>
+  <% @users.each do |user| %>
+    <li><%= link_to user.email, user %></li>
+  <%end %>
+</ul>
+</div>

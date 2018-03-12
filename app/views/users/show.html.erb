@@ -1,0 +1,18 @@
+<div class="page-header">
+  <% if @user == current_user %>
+    <%= link_to new_list_path, class: 'btn btn-primary' do %>
+      <span class="glyphicon glyphicon-plus"></span>
+      New ToDo List
+    <% end %>
+  <% end -%>
+  <h1><%= @user.email %> Lists</h1>
+</div>
+
+<div class='well'>
+  <dl class="dl-horizontal">
+    <% @user.lists.each do |list|%>
+      <dt><%= link_to list.title, list %></dt>
+      <dd><%= link_to list.description, list %></dd>
+    <% end -%>
+  </dl>
+</div>

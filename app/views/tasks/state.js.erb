@@ -1,0 +1,7 @@
+$(document).ready(function(){
+  <% if @task.completed? %>
+    $("#list-<%= @list.id %>").find("#task-<%= @task.id %> a").html("<strike><%= @task.body %></strike>");
+  <% else %>
+    $("#list-<%= @list.id %>").find("#task-<%= @task.id %> a").html("<%= @task.body %>");
+  <% end %>
+});

@@ -1,30 +1,25 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
-  # GET /lists
-  # GET /lists.json
-  def index
-    @lists = List.all
-  end
 
   # GET /lists/1
   # GET /lists/1.json
   def show
-  end
-
-  # GET /lists/new
-  def new
-    @list = List.new
+    @task = Task.new
   end
 
   # GET /lists/1/edit
   def edit
   end
 
+  def new
+    @list = current_user.lists.new
+  end
+
   # POST /lists
   # POST /lists.json
   def create
-    @list = List.new(list_params)
+    @list = current_user.lists.new(list_params)
 
     respond_to do |format|
       if @list.save
@@ -64,7 +59,11 @@ class ListsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_list
-      @list = List.find(params[:id])
+      @list = List.find_by_id!(params[:id])
+      unless current_user == @list.user
+        flash[:error] = 'You are not authorized to view this list'
+        return redirect_back(fallback_location: root_path)
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
